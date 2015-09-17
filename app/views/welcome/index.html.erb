@@ -1,0 +1,42 @@
+<div class="jumbotron">
+  <h1>Welcome to my Travel Site</h1>
+  <p>This is my awesome travel site.</p>
+</div>
+<div class="container">
+
+
+  <%= @homeland %>
+  <ul>
+    <% @countries.each do |country| %>
+    <li><%= country %></li>
+    <% end %>
+  </ul>
+  <% @images.each do |image| %>
+  <br>
+  <%= image_tag image, class: "img-responsive" %>
+  <% end %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <% @travel_hash.each do |key, value| %>
+        <th><%= key.titleize %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @travel_hash.each do |key, value| %>
+        <% if value.kind_of?(Array) %>
+        <td><%= value.join(", ") %></td>
+        <% else %>
+        <td><%= value %></td>
+        <% end %>
+        <% end %>
+      </tr>
+    </tbody>
+    <div id="map-canvas">
+
+    </div>
+  </table>
+</div>
